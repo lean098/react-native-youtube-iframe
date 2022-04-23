@@ -142,14 +142,14 @@
         });
       }
 
-      document.querySelector('div.ytp-show-cards-title').style.display = 'none';
-      document.querySelector('a.ytp-impression-link').style.display = 'none';
-      document.querySelector('.ytp-pause-overlay').style.display = 'none';
+      document.querySelector('iframe >* div.ytp-show-cards-title').style.display = 'none';
+      document.querySelector('iframe >* a.ytp-impression-link').style.display = 'none';
+      document.querySelector('iframe >* .ytp-pause-overlay').style.display = 'none';
       document.querySelector(
-        '.ytp-youtube-button.yt-uix-sessionlink',
+        'iframe >* .ytp-youtube-button.yt-uix-sessionlink',
       ).style.display = 'none';
       document.querySelector(
-        '.branding-img-container.ytp-button',
+        'iframe >* .branding-img-container.ytp-button',
       ).style.display = 'none';
       document.addEventListener('fullscreenchange', onFullScreenChange);
       document.addEventListener('msfullscreenchange', onFullScreenChange);
