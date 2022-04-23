@@ -142,15 +142,20 @@
         });
       }
 
-      document.querySelector('iframe >* div.ytp-show-cards-title').style.display = 'none';
-      document.querySelector('iframe >* a.ytp-impression-link').style.display = 'none';
-      document.querySelector('iframe >* .ytp-pause-overlay').style.display = 'none';
-      document.querySelector(
-        'iframe >* .ytp-youtube-button.yt-uix-sessionlink',
-      ).style.display = 'none';
-      document.querySelector(
-        'iframe >* .branding-img-container.ytp-button',
-      ).style.display = 'none';
+      const $iframe = document.querySelector('iframe');
+      $iframe.addEventListener('load', function () {
+        const doc = $iframe.contentDocument;
+        const style = doc.createElement('style');
+        style.textContent = `
+        div.ytp-show-cards-title { display:none!important; }
+        a.ytp-impression-link { display:none!important; }
+        .ytp-pause-overlay { display:none!important; }
+        .ytp-youtube-button.yt-uix-sessionlink { display:none!important; }
+        .branding-img-container.ytp-button { display:none!important; }
+        `;
+        doc.head.append(style);
+      });
+      
       document.addEventListener('fullscreenchange', onFullScreenChange);
       document.addEventListener('msfullscreenchange', onFullScreenChange);
       document.addEventListener('mozfullscreenchange', onFullScreenChange);
